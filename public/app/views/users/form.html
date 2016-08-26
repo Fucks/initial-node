@@ -1,0 +1,132 @@
+<div layout="column" layout-gt-md="row">
+    <md-card flex layout="column" md-whiteframe="2">
+        <form name="form" ng-submit="controller.save()">
+            <md-card-header>
+                <div class="md-toolbar-tools">
+                    <h1>Novo usuário</h1>
+                </div>
+            </md-card-header>
+            <md-card-content flex layout-padding>
+                <div layout="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Nome completo</label>
+                        <md-icon md-font-icon="material-icon">person</md-icon>
+                        <input required name="fullName" ng-model="controller.currentUser.fullname">
+                        <!-- nome do form . nome do input .$erro -->
+                        <div ng-messages="form.fullName.$error">
+                            <div ng-message="required">Campo obrigatório.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Telefone</label>
+                        <md-icon md-font-icon="material-icon">phone</md-icon>
+                        <input required name="phone" ng-pattern="/^[0-9]+$/" ng-model="controller.currentUser.phone">
+                        <div ng-messages="form.phone.$error">
+                            <div ng-message="required">Campo obrigatório.</div>
+                            <div ng-message="pattern">Informe apenas números.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Endereço</label>
+                        <md-icon md-font-icon="material-icon">home</md-icon>
+                        <input name="address" ng-model="controller.currentUser.address">
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container flex-gt-xs>
+                        <label>E-mail</label>
+                        <md-icon md-font-icon="material-icon">email</md-icon>
+                        <input required name="email" ng-model="controller.currentUser.email">
+                        <div ng-messages="form.email.$error">
+                            <div ng-message="required">Campo obrigatório.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Senha</label>
+                        <md-icon md-font-icon="material-icon">key</md-icon>
+                        <input required name="password" type="password" ng-model="controller.currentUser.password">
+                        <div ng-messages="form.email.$error">
+                            <div ng-message="required">Campo obrigatório.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Observações</label>
+                        <input ng-model="controller.currentUser.observations">
+                    </md-input-container>
+                </div>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center"> 
+                <md-button type="button" ng-click="controller.resetForm()" aria-label="Cancel">
+                    <md-icon md-font-icon="material-icon">cancel</md-icon>
+                </md-button>
+                <md-button type="submit" class="md-raised md-primary" aria-label="Save">
+                    <md-icon md-font-icon="material-icons">add</md-icon>
+                </md-button>
+            </md-card-actions>
+        </form>
+    </md-card>
+    <md-card flex layout="column" md-whiteframe="2">
+        <md-card-header>
+            <div class="md-toolbar-tools" >
+                <h1> Usuários cadastrados</h1>
+            </div>
+            <div ng-show="controller.showSearch" class="md-toolbar-tools" layout-align="left"  flex="50">
+                <md-button aria-label="Search" class="md-icon-button" ng-click="controller.showSearch = !controller.showSearch">
+                    <md-icon md-font-set="material-icons">arrow_back</md-icon>
+                </md-button>
+                <md-input-container>
+                    <label>Pesquisar</label>
+                    <input ng-model="controller.page.query">
+                </md-input-container>
+            </div>
+            <div ng-show="!controller.showSearch" flex  class="md-toolbar-tools" layout-align="left">
+                <md-button aria-label="Search" class="md-icon-button" ng-click="controller.showSearch = !controller.showSearch">
+                    <md-icon md-font-set="material-icons">search</md-icon>
+                </md-button>
+            </div>
+        </md-card-header>
+        <md-card-content flex layout-padding layout-align="top top">
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="user in controller.page.content">
+                    <div class="md-list-item-text">
+                        <h3>{{user.fullname}}</h3>
+                        <small>{{user.email}}</small><br />
+                        <small>{{user.phone}}</small>
+                    </div>
+                    <md-button class="md-secondary md-icon-button" aria-label="edit" ng-click="controller.changeEdit(user.id)">
+                        <md-icon md-font-set="material-icons">edit</md-icon>
+                    </md-button>
+                    <md-button class="md-secondary md-icon-button" ng-click="controller.remove(user.id, $event)" aria-label="delete">
+                        <md-icon md-font-set="material-icons">delete</md-icon>
+                    </md-button>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+                <md-list-item class="md-3-line" ng-show="controller.page.content.length == 0">
+                    <h4>Nenhum registro encontrado.</h4>
+                </md-list-item>
+
+            </md-list>
+        </md-card-content>
+        <div layout="row" layout-align="center end">
+            <na>
+                <ul class="paginator">
+                    <li><md-button ng-disabled="controller.page.number == 0"
+                                   ng-click="controller.controlPagination.back()"><md-icon md-font-icon="material-icons">navigate_before</md-icon></md-button></li>
+                    <li><md-button ng-repeat="page in controller.controlPagination.pages() track by $index"
+                                   ng-class="{'md-raised md-primary' : controller.page.number == $index}"
+                                   ng-click="controller.controlPagination.change($index)">{{$index + 1}}</md-button></li>
+                    <li><md-button ng-disabled="controller.page.pages < 2 || controller.page.number +1 == controller.page.pages"
+                                   ng-click="controller.controlPagination.forward()"><md-icon md-font-icon="material-icons">navigate_next</md-icon></md-button></li>
+                </ul>
+            </na>
+        </div>
+    </md-card>
+</div>

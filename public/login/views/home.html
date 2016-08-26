@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/assets/css/custom-login.css">
+<div class="login">
+    <form name="form" action="/api/login" method="POST">
+        <md-input-container>
+            <md-icon md-font-icon="material-icons" class="name">person</md-icon>
+            <label>E-mail</label>
+            <input ng-model="user.name" name="username" type="text" ng-required="true">
+            <div ng-messages="form.userName.$error">
+                <div ng-message="required">Informe o e-mail.</div>
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float>
+            <md-icon md-font-icon="material-icons" class="email">email</md-icon>
+            <label>Senha</label>
+            <input type="password" ng-required="true" name="password">
+            <div ng-messages="form.userPassword.$error">
+                <div ng-message="required">Informe a senha.</div>
+            </div>
+        </md-input-container>
+
+        <md-button class="md-raised md-primary" type="submit">Login</md-button>
+        <md-button class="md-raised md-accent" href="#register" style="margin-top: 6px; background-color: #ec8666;">Registrar</md-button>
+    </form>
+    <footer>
+    </footer>
+</div>

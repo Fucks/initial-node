@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nodejs + Angular starter APP</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/library/angular-material/angular-material.css">
+        <style type="text/css">
+            /**
+            * Hide when Angular is not yet loaded and initialized
+            */
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                display: none !important;
+            }
+        </style>
+        <link rel="stylesheet" href="/assets/css/custom.css">
+    </head>
+    <body ng-app="app" layout="column" ng-cloak>
+        <div ng-controller="HeaderController as controller">
+            <md-toolbar layout="row" ng-show="!controller.showSearch">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="controller.toggleSidenav()">
+                        <md-icon  md-font-set="material-icons">menu</md-icon>
+                    </md-button>
+                    <h1>Angular Material - Starter App</h1>
+                    <span flex></span>
+                    <md-button aria-label="Search" class="md-icon-button" ng-click="controller.showSearch = !controller.showSearch">
+                        <md-icon md-font-set="material-icons">search</md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                            <md-icon md-menu-origin md-font-icon="material-icons">more_vert</md-icon>
+                        </md-button>
+                        <md-menu-content width="4">
+                            <md-menu-item>
+                                <md-button href="#profile">
+                                    <md-icon md-font-icon="material-icons" md-menu-align-target>person</md-icon>
+                                    Profile
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button href="/api/login/logout">
+                                    <md-icon md-font-icon="material-icons" md-menu-align-target>exit_to_app</md-icon>
+                                    Sair
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </md-toolbar>
+            <md-toolbar ng-show="controller.showSearch">
+                <div class="md-toolbar-tools">
+                    <md-button ng-click="controller.showSearch = !controller.showSearch"  class="md-icon-button" aria-label="Back">
+                        <md-icon md-font-set="material-icons">arrow_back</md-icon>
+                    </md-button>
+                    <md-input-container flex class="md-primary">
+                        <label>Pesquisar</label>
+                        <md-icon md-font-icon="material-icon">search</md-icon>
+                        <input name="search" ng-model="controller.search" style=" position: absolute;">
+                    </md-input-container>
+                    <md-button aria-label="Search"  class="md-icon-button" ng-click="controller.showSearch = !controller.showSearch">
+                        <md-icon md-font-set="material-icons">search</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </div>
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-left" md-component-id="left"
+                        md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+                <md-content layout-padding>
+                    <md-list ng-cloak>
+                        <md-list-item class="noright" href="#home">
+                            <md-icon md-font-set="material-icons" class="menu_item">home</md-icon>
+                            <p>Home</p>
+                        </md-list-item>
+                        <md-divider></md-divider>
+                        <md-list-item class="noright" href="#profile" >
+                            <md-icon md-font-set="material-icons" class="menu_item">person</md-icon>
+                            <p>Profile</p>
+                        </md-list-item>
+                        <md-divider></md-divider>
+                        <md-list-item class="noright" href="#usuarios" >
+                            <md-icon md-font-set="material-icons" class="menu_item">group</md-icon>
+                            <p>Usuários</p>
+                        </md-list-item>
+                        <md-divider></md-divider>
+                    </md-list>
+                </md-content>
+            </md-sidenav>
+            <md-content flex layout-padding>
+                <div ui-view></div>
+            </md-content>
+        </section>
+
+        <!-- Angular and dependencies -->
+        <script src="/assets/library/angular/angular.min.js"></script>
+        <script src="/assets/library/angular/angular-animate.js"></script>
+        <script src="/assets/library/angular/angular-aria.js"></script>
+
+        <!-- Angular libraries -->
+        <script src="/assets/library/angular-material/angular-material.js"></script>
+        <script src="/assets/library/ui-router/angular-ui-router.min.js"></script>
+        <script src="/assets/library/angular-messages/angular-messages.min.js"></script>
+
+        <!-- Utils -->
+        <script src="util/control-pagination.js"></script>
+
+        <script src="app.js"></script>
+
+        <!-- Controllers -->
+        <script src="controller/header-controller.js"></script>
+        <script src="controller/user-controller.js"></script>
+
+        <!-- Services -->
+        <script src="service/user-service.js"></script>
+
+    </body>
+</html>
