@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = function(passport, Strategy, User){
     // Configure the local strategy for use by Passport.
     //

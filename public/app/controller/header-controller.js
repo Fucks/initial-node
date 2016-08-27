@@ -12,6 +12,7 @@ angular.module("app").controller('HeaderController', function ($injector, $scope
         Abre o menu de navegação lateral quando o width for < 1200px
     */
     function toggleSidenav(){
-        $mdSidenav('left').toggle();  
+        $mdSidenav('left').toggle();
     };
+
 });

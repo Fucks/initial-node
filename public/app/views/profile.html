@@ -1,1 +1,26 @@
-<h1>Hello, this is a Profile Page!</h1>
+<div layout="row" flex ng-cloak>
+    <md-content layout="column">
+        <md-card md-whiteframe="2">
+            <md-card-content layout="row" flex layout-margin>
+                <div layout="column"><h1>imagem</h1></div>
+                <div layout="column">
+                    <h1 class="md-headline">{{controller.authenticatedUser.fullname}}</h1>
+                    <md-divider></md-divider>
+                    <p>
+                        <label>E-mail</label><br>
+                        <label class="md-subhead">{{controller.authenticatedUser.email}}</label>
+                    </p>                    <p>
+                        <label>Telefone</label><br>
+                        <label class="md-subhead">{{controller.authenticatedUser.phone}}</label>
+                    </p>                    <p>
+                        <label>Endereço</label><br>
+                        <label class="md-subhead">{{controller.authenticatedUser.address}}</label>
+                    </p>                    <p>
+                        <label>Observações</label><br>
+                        <label class="md-subhead">{{controller.authenticatedUser.observation}}</label>
+                    </p>
+                </div>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</div>

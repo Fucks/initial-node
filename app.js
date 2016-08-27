@@ -27,9 +27,8 @@ var app = express();
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
-
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
+app.use(session({ secret: 'xX4V4SC4R0S4', resave: false, saveUninitialized: false }));
 
 //configura a sessão
 app.use(passport.initialize());
@@ -39,7 +38,7 @@ app.use(passport.session());
 app.get('/', isLogged, function(req, res, next){
     res.redirect('/app');
 });
-app.use('/app', require('connect-ensure-login').ensureLoggedIn(), express.static('public/app'));
+app.use('/app', express.static('public/app'));
 app.use('/login', express.static('public/login'));
 
 //rotas de librarys front-end
@@ -63,7 +62,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         console.log(err);
-        res.status(500).send(err);
+        res.status(err.status).send(err);
     });
 }
 
@@ -71,7 +70,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(err.status).send(err);
 });
 
 

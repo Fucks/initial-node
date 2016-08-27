@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -75,17 +76,17 @@
                         md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
                 <md-content layout-padding>
                     <md-list ng-cloak>
-                        <md-list-item class="noright" href="#home">
+                        <md-list-item class="noright" ng-click="controller.toggleSidenav()" href="#home">
                             <md-icon md-font-set="material-icons" class="menu_item">home</md-icon>
                             <p>Home</p>
                         </md-list-item>
                         <md-divider></md-divider>
-                        <md-list-item class="noright" href="#profile" >
+                        <md-list-item class="noright" ng-click="controller.toggleSidenav()" href="#profile">
                             <md-icon md-font-set="material-icons" class="menu_item">person</md-icon>
                             <p>Profile</p>
                         </md-list-item>
                         <md-divider></md-divider>
-                        <md-list-item class="noright" href="#usuarios" >
+                        <md-list-item class="noright" ng-click="controller.toggleSidenav()" href="#usuarios">
                             <md-icon md-font-set="material-icons" class="menu_item">group</md-icon>
                             <p>Usuários</p>
                         </md-list-item>
@@ -106,6 +107,7 @@
         <!-- Angular libraries -->
         <script src="/assets/library/angular-material/angular-material.js"></script>
         <script src="/assets/library/ui-router/angular-ui-router.min.js"></script>
+        <script src="/assets/library/angular-cookies/angular-cookies.min.js"></script>
         <script src="/assets/library/angular-messages/angular-messages.min.js"></script>
 
         <!-- Utils -->
@@ -116,6 +118,7 @@
         <!-- Controllers -->
         <script src="controller/header-controller.js"></script>
         <script src="controller/user-controller.js"></script>
+        <script src="controller/profile-controller.js"></script>
 
         <!-- Services -->
         <script src="service/user-service.js"></script>
