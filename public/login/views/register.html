@@ -1,55 +1,53 @@
-<div layout="row" flex="100" layout-align="center center">
-    <md-content flex="50" flex-xs="100" flex-sm="100" >
-        <md-card style="margin-top: 100px">
-            <form name="form" action="/api/login/register" method="post">
-                <md-card-title>
-                    <h3>Registre-se!</h3>
-                </md-card-title>
-                <md-card-content layout="column">
-                    <md-input-container>
-                        <label>Nome</label>
-                        <input required name="fullname" type="text">
-                        <div ng-messages="form.fullname.$error">
-                            <div ng-message="required">Campo obrigatório.</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Telefone</label>
-                        <input name="phone" ng-pattern="/^[0-9]+$/" type="text">
-                        <div ng-messages="form.phone.$error">
-                            <div ng-message="pattern">Informe apenas números.</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Endereço</label>
-                        <input name="address" type="text">
-                    </md-input-container>
-                    <md-input-container>
-                        <label>E-mail</label>
-                        <input name="email" required type="email">
-                        <div ng-messages="form.email.$error">
-                            <div ng-message="required">O campo é obrigatório.</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Senha</label>
-                        <input name="password" required type="password">
-                        <div ng-messages="form.password.$error">
-                            <div ng-message="required">O campo é obrigatório.</div>
-                        </div>
-                    </md-input-container>
-                </md-card-content>
-                <md-card-actions layout="row" layout-align="end center">
-                    <md-button class="md-raised" href="#" style="margin-right: 8px">
-                        <md-icon md-font-icon="material-icons">cancel</md-icon>
-                        Cancelar
-                    </md-button>
-                    <md-button class="md-raised md-primary" type="submit">
-                        <md-icon md-font-icon="material-icons">add</md-icon>
-                        Registrar
-                    </md-button>
-                </md-card-actions>
-            </form>
-        </md-card>
-    </md-content>
+<div layout="row" flex layout-align="center center">
+    <md-card style="margin-top: 100px" flex="50" flex-xs="100" flex-sm="100" md-whiteframe="4">
+        <form name="form" action="/api/login/register" method="post">
+            <md-card-title>
+                <h3>Registre-se!</h3>
+            </md-card-title>
+            <md-card-content layout="column">
+                <md-input-container>
+                    <label>Nome</label>
+                    <input required name="fullname" type="text">
+                    <div ng-messages="form.fullname.$error">
+                        <div ng-message="required">Campo obrigatório.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Telefone</label>
+                    <input name="phone" ng-pattern="/^[0-9]+$/" type="text">
+                    <div ng-messages="form.phone.$error">
+                        <div ng-message="pattern">Informe apenas números.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Endereço</label>
+                    <input name="address" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label>E-mail</label>
+                    <input name="email" required type="email">
+                    <div ng-messages="form.email.$error">
+                        <div ng-message="required">O campo é obrigatório.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Senha</label>
+                    <input name="password" required type="password">
+                    <div ng-messages="form.password.$error">
+                        <div ng-message="required">O campo é obrigatório.</div>
+                    </div>
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-raised" href="#" style="margin-right: 8px">
+                    <md-icon md-font-icon="material-icons">cancel</md-icon>
+                    Cancelar
+                </md-button>
+                <md-button class="md-raised md-primary" type="submit">
+                    <md-icon md-font-icon="material-icons">add</md-icon>
+                    Registrar
+                </md-button>
+            </md-card-actions>
+        </form>
+    </md-card>
 </div>

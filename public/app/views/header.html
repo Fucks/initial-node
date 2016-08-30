@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<div ng-controller="HeaderController as controller">
+    <md-toolbar layout="row" md-whiteframe="4" ng-show="!controller.showSearch">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Settings" ng-click="controller.toggleSidenav()">
+                <md-icon md-font-set="material-icons">menu</md-icon>
+            </md-button>
+            <h1>Angular Material - Starter App</h1>
+            <span flex></span>
+            <md-button aria-label="Search" class="md-icon-button"
+                       ng-click="controller.showSearch = !controller.showSearch">
+                <md-icon md-font-set="material-icons">search</md-icon>
+            </md-button>
+            <md-menu>
+                <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <md-icon md-menu-origin md-font-icon="material-icons">more_vert</md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button href="#profile">
+                            <md-icon md-font-icon="material-icons" md-menu-align-target>person</md-icon>
+                            Profile
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button href="/api/login/logout">
+                            <md-icon md-font-icon="material-icons" md-menu-align-target>exit_to_app</md-icon>
+                            Sair
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-toolbar ng-show="controller.showSearch">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="controller.showSearch = !controller.showSearch" class="md-icon-button"
+                       aria-label="Back">
+                <md-icon md-font-set="material-icons">arrow_back</md-icon>
+            </md-button>
+            <md-input-container flex class="md-primary">
+                <label>Pesquisar</label>
+                <md-icon md-font-icon="material-icon">search</md-icon>
+                <input name="search" ng-model="controller.search" style=" position: absolute;">
+            </md-input-container>
+            <md-button aria-label="Search" class="md-icon-button"
+                       ng-click="controller.showSearch = !controller.showSearch">
+                <md-icon md-font-set="material-icons">search</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+</div>
